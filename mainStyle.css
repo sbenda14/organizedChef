@@ -1,0 +1,23 @@
+head{
+	background-color:papayawhip;
+}
+body{
+	background-color:papayawhip;
+	
+}
+.banner {
+  overflow:hidden;
+  height: 125px;
+}
+	
+.thumbnail{
+	width: 10%;
+	float: left;
+}
+.nav-bar >ul >li {
+ display: inline;	
+}
+	
+#footer >ul >li {
+ display:inline;
+}
