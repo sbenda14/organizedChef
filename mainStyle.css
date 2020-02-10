@@ -1,23 +1,51 @@
-head{
-	background-color:papayawhip;
-}
+
 body{
 	background-color:papayawhip;
-	
+	/* ecologica color palette https://www.color-hex.com/color-palette/27505*/
 }
 .banner {
   overflow:hidden;
-  height: 125px;
+  height: 150px;
+}
+
+.companyName{
+	font-family: monospace, sans-serif;
+	font-size: 20px;
 }
 	
 .thumbnail{
 	width: 10%;
 	float: left;
 }
-.nav-bar >ul >li {
- display: inline;	
+
+.join{
+	float:right;
 }
-	
-#footer >ul >li {
- display:inline;
+
+.join>ul>li{
+	display: inline;
+}
+
+.nav-bar{
+	background-color:#a2937e;
+	color: white;
+	text-decoration:none;
+	height: 200 px;
+	font-size: 30px;
+}
+.nav-bar >ul >li {
+	display: inline;
+}
+
+.nav-bar >ul >li>a {
+	background-color:#a2937e;
+	color: white;
+	text-decoration:none;
+}
+
+.footer {
+ text-align:center;
+}
+.footer>ul>li{
+	display:inline;	
 }
