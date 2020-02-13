@@ -5,44 +5,46 @@ body{
 .banner {
   height: 250px;
   background-image: url("topBackground.png");
-  /*https://assets.blog.hgtv.ca/wp-content/hgtv-wp/2018/01/12105453/Feng-Shui-Kitchen-Cupboards-Gallery-Feature.jpg*/
   background-size: 50% 100%;
   background-repeat: repeat-x;
   text-align:center;
-  
+  /*background image source:
+  https://assets.blog.hgtv.ca/wp-content/hgtv-wp/2018/01/12105453/Feng-Shui-Kitchen-Cupboards-Gallery-Feature.jpg*/
 }
 
 .banner img{
-	/*https://www.clipart.email/download/1877271.html*/
 	display:inline-block;	
 	width: 20%;
 	height: 100%;
+	/*Source for logo creation: https://www.clipart.email/download/1877271.html*/
 }
-	
-
-.join{
-	float:right;
-}
-
-.join>ul>li{
-	display: inline;
-}
-
-.nav-bar{
+.nav-bar, .joinUs{
 	background-color:#a2937e;
-	color: white;
-	text-decoration:none;
-	height: 250 px;
+	/*height: 60 px;*/
 	font-size: 30px;
-}
-.nav-bar >ul >li {
-	display: inline;
+	margin:0 0;
+	padding: 0 0;
+	box-sizing: border-box;
 }
 
-.nav-bar >ul >li>a {
-	background-color:#a2937e;
+.joinUs{
+	text-align: right;
+}
+
+.joinUs >ul>li>a, .nav-bar >ul >li>a {
 	color: white;
 	text-decoration:none;
+}
+
+ul.join, ul.navigate {
+    display: block;
+    list-style-type: disc;
+    margin: 0 0 0 0;
+	padding: 0 0 0 0;
+}
+
+.join >li, .navigate >li {
+	display: inline;
 }
 
 .footer {
