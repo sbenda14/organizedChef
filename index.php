@@ -1,10 +1,10 @@
 <?php include_once("header.php"); ?>
 		<div class="content">
-			<div id="home">
+			<div class="plainText" id="home">
 			<h1>Welcome to The Organized Chef!</h1>
 			<ul>
 			<li>Can't remember how long to bake that potato?</li>
-			<li>Don't recall what temperature you need to make roasted veggies?</li>
+			<li>Is your famous pumpkin pie recipe written on a napkin?</li>
 			<li>Have a favorite chicken recipe online...around here somewhere?</li>
 			</ul>
 			<p> 

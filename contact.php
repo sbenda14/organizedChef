@@ -1,6 +1,6 @@
 <?php include_once("header.php"); ?>
 		<div class="content">
-			<div id="contact">
+			<div class="plainText" id="contact">
 			<h1>Contact Us</h1>
 			<p> Have questions, comments or requests? Send us an email!</p>
 			</div>
