@@ -47,6 +47,12 @@ ul.join, ul.navigate {
 	display: inline;
 }
 
+.plainText {
+	background-color: #FFFFF0;
+	text-align: center;
+	border: solid;
+}
+
 .footer {
  text-align:center;
  height: 250px;
@@ -54,6 +60,13 @@ ul.join, ul.navigate {
  background-size: 50% 100%;
  background-repeat: repeat-x;
 }
+
 .footer>ul>li{
 	display:inline;	
 }
+
+img.pups{
+width: 300 px;
+height: 300 px;
+}
+
