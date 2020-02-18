@@ -2,7 +2,7 @@
 		<div class="content">
 			<div class="plainText" id="contact">
 			<h1>Contact Us</h1>
-			<p> Have questions, comments or requests? Send us an email!</p>
+			<p> Have questions, comments or requests? Send us an email by filling out the form below!</p>
 			</div>
 		</div>
 		
