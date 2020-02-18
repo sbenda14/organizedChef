@@ -9,7 +9,7 @@
 				she enjoys cooking, hiking, gardening, and quality time with her family.
 				</p>
 			</div>
-			<div>
+			<div class="aboutPics">
 				<img class="pups" src="Hera.png" id="Hera">
 				<img class="pups" src="Luna.png" id="Luna">
 			</div>
