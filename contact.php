@@ -4,8 +4,9 @@
 				<h1>Contact Us</h1>
 				<p> Have questions, comments or requests? Send us an email by filling out the form below!</p>
 			</div>
-			<div class="contactForm">
+			<div class="contactForm plainText">
 				<!-- contact form will go here. -->
+				form will go here
 			</div>
 		</div>
 <?php include_once("footer.php"); ?>
