@@ -72,6 +72,10 @@ ul.join, ul.navigate {
 	text-align:center;
 }
 
+.display{
+	text-align:center;
+}
+
 .screenshot{
   /*partial duplicate of .plainText for now...will be .pngs in future */
   background-color:#FFFFF0;
@@ -81,8 +85,9 @@ ul.join, ul.navigate {
   line-height:15;
   border: solid;
   border-color:#f1c27d;
-  margin: 20px 20px 20px 100px;
-  float:left;
+  margin: 20px 20px 20px 20px;
+  display:inline-block;
+  vertical-align:top;
 }
 
 /*.sideBar, .filters and .recipes below will be adjusted once
