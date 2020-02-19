@@ -89,6 +89,7 @@ ul.join, ul.navigate {
   margin: 20px 20px 20px 20px;
   display:inline-block;
   vertical-align:top;
+  /*https://stackoverflow.com/questions/17583185/center-three-divs-side-by-side*/
 }
 
 /*.sideBar, .filters and .recipes below will be adjusted once
