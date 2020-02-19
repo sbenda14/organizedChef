@@ -4,7 +4,7 @@ body{
 }
 .banner {
   height: 250px;
-  background-image: url("topBackground.png");
+  background-image: url("bottomBackground.png");
   background-size: 50% 100%;
   background-repeat: repeat-x;
   text-align:center;
@@ -14,7 +14,7 @@ body{
 
 .banner img{
 	display:inline-block;	
-	width: 20%;
+	width: 19%;
 	height: 100%;
 	/*Source for logo creation: https://www.clipart.email/download/1877271.html*/
 }
@@ -66,12 +66,14 @@ ul.join, ul.navigate {
 	text-align:center;
 }
 
+
 #signUp {
 	clear:left;
 	text-align:center;
 }
 
 .screenshot{
+  /*partial duplicate of .plainText for now...will be .pngs in future */
   background-color:#FFFFF0;
   height: 200px;
   width: 20%;
@@ -82,6 +84,9 @@ ul.join, ul.navigate {
   margin: 20px 20px 20px 100px;
   float:left;
 }
+
+/*.sideBar, .filters and .recipes below will be adjusted once
+   real content is added */
 
 .sideBar{
   width:160px;
@@ -114,13 +119,24 @@ ul.join, ul.navigate {
 }
 
 
-
 .aboutPics{
 	text-align:center;
 }
 
 .pups{
   padding: 20px;
+}
+
+
+#contact{
+	text-align:center;
+}
+
+.contactForm{
+  /*will edit as form is added */
+  text-align:center;
+  margin:10px 100px 10px 100px;
+	
 }
 
 .footer {
