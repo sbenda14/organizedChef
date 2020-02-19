@@ -77,7 +77,8 @@ ul.join, ul.navigate {
 }
 
 .screenshot{
-  /*partial duplicate of .plainText for now...will be .pngs in future */
+  /*partial duplicate of .plainText for now...will be .pngs of recipe page in future 
+   will update code once .pngs made*/
   background-color:#FFFFF0;
   height: 200px;
   width: 20%;
