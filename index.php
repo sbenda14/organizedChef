@@ -1,4 +1,13 @@
-<?php include_once("header.php"); ?>
+<?php 
+  session_start();
+  include_once("banner.php");
+  if(!isset($_SESSION['auth']) || !$_SESSION['auth']){
+    include_once("joinUs.php");
+  }else	{
+	include_once("leaveUs.php");
+   }
+  include_once("navBar.php");
+ ?>
 		<div class="content">
 			<div class="plainText" id="home">
 				<h1 class="welcome">Welcome to The Organized Chef!</h1>

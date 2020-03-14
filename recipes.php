@@ -1,4 +1,17 @@
-<?php include_once("header.php"); ?>
+<?php 
+  session_start();
+  //include_once("header.php");
+  include_once("banner.php");
+  include_once("leaveUs.php");
+  include_once("navBar.php");
+  
+  
+  // check if user is authenticated
+  if (!isset($_SESSION['auth']) || !$_SESSION['auth'])  {
+    header("Location: http://localhost/organizedchef/login.php");
+    exit;
+  }
+  ?>
 		<div class="content">
 			<div class="sideBar">
 				<!--These will have forms underneath them: check boxes, dropdowns, etc.

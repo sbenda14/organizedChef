@@ -1,6 +1,6 @@
 body{
 	background-color:#76eec6;
-	font-family: monospace;
+	font-family: 'IBM Plex Mono', monospace;
 }
 .banner {
   height: 250px;
@@ -18,7 +18,8 @@ body{
 	height: 100%;
 	/*Source for logo creation: https://www.clipart.email/download/1877271.html*/
 }
-.nav-bar, .joinUs{
+
+.nav-bar, .joinUs, .leaveUs{
 	background-color:#a2937e;
 	font-size: 30px;
 	margin:0 0;
@@ -26,23 +27,23 @@ body{
 	box-sizing: border-box;
 }
 
-.joinUs{
+.joinUs, .leaveUs{
 	text-align: right;
 }
 
-.joinUs >ul>li>a, .nav-bar >ul >li>a {
+.joinUs >ul>li>a, .nav-bar >ul >li>a, .leaveUs a {
 	color: white;
 	text-decoration:none;
 }
 
-ul.join, ul.navigate {
+ul.join, ul.navigate{
     display: block;
     list-style-type: disc;
     margin: 0 0 0 0;
 	padding: 0 0 0 0;
 }
 
-.join >li, .navigate >li {
+.join >li, .navigate >li{
 	display: inline;
 }
 
@@ -55,7 +56,7 @@ ul.join, ul.navigate {
 	line-height: 1.6;
 	padding: 20px;
 	border: solid;
-	border-color:#f1c27d;
+	border-color:#EEC676; /*#f1c27d;*/
 }
 
 .plainText >ul> li{
@@ -64,6 +65,18 @@ ul.join, ul.navigate {
 
 .plainText >h1, .welcome{
 	text-align:center;
+}
+
+#login{
+ text-align: center;	
+}
+
+#register{
+  text-align:center;
+}
+
+#loginButton, #registerButton{
+ margin: 10 auto;
 }
 
 
@@ -77,8 +90,7 @@ ul.join, ul.navigate {
 }
 
 .screenshot{
-  /*partial duplicate of .plainText for now...will be .pngs of recipe page in future 
-   will update code once screenshots made*/
+  /*partial duplicate of .plainText for now...will be .pngs in future */
   background-color:#FFFFF0;
   height: 200px;
   width: 20%;
@@ -89,7 +101,6 @@ ul.join, ul.navigate {
   margin: 20px 20px 20px 20px;
   display:inline-block;
   vertical-align:top;
-  /*https://stackoverflow.com/questions/17583185/center-three-divs-side-by-side*/
 }
 
 /*.sideBar, .filters and .recipes below will be adjusted once
