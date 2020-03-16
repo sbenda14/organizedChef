@@ -29,7 +29,7 @@ class Dao {
   public function verifyUser($password, $email){	 
 	$conn = $this->getConnection();
 	if(is_null($conn)) {
-      return;
+      return false;
     }
     $checkQuery = "select * from userinfo where email = :email";
     $q = $conn->prepare($checkQuery);
