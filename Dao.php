@@ -11,7 +11,7 @@ class Dao {
 
   public function getConnection() {
     try {
-       $connection = new PDO("mysql:host={$this->host};dbname={$this->dbname}", $this->username, $this->password);
+       $connection = new PDO("mysql:host={$this->host};dbname={$this->dbname}", "{$this->username}", "{$this->password}");
     } catch (Exception $e) {
 		echo "Problem connecting to database";
 		echo print_r($e,1);
@@ -34,9 +34,9 @@ class Dao {
     $checkQuery = "select * from userinfo where email = :email";
     $q = $conn->prepare($checkQuery);
 	$q->execute(['email' => $email]); 
-	$user = $q->fetch();
+	$user = $q->fetch(PDO::FETCH_ASSOC);
 	$result = false;
-	if ($user->rowCount() > 0) { //assuming emails are unique here.
+	if ($q->rowCount() > 0) { //assuming emails are unique here.
 		if ($user['password'] == $password){
 			$result = true;
 		}

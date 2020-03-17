@@ -8,11 +8,13 @@
   if(!$matchUser) {
     $error = "Error, email or password do not match";
     $_SESSION['error'] = $error;
+	$_SESSION['auth']=false;
     header("Location: https://theorganizedchef.herokuapp.com/login.php"); // http://localhost/organizedchef/login.php"); //home page or login in page if different
     exit;
   }
   
   //if passed, then getAllRecipes() and go to recipe page
+  $_SESSION['auth']=true;
   header("Location: https://theorganizedchef.herokuapp.com/recipes.php"); //http://localhost/organizedchef/recipes.php");
   exit;
   
