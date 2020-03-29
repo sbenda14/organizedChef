@@ -38,4 +38,4 @@
   $_SESSION['user']= $matchUser; //I know this isn't secure. will need to adjust
   $_SESSION['auth']=true;
   header("Location: https://theorganizedchef.herokuapp.com/recipes.php");
-  
+  exit;
