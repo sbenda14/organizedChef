@@ -4,23 +4,42 @@ session_start();
   require_once 'Dao.php';
   $dao = new Dao();
   
-  // validate
-  $dao->checkEmail($_POST['email']);
-  if(//check email) {
-    $error = "Error, email does not exist. Check spelling";
-    $_SESSION['error'] = $error;
-    header("Location: https://theorganizedchef.herokuapp.com/index.php"); //home page or login in page if different
+   $errors = array();
+  //validate email is an email, password is not blank and passwords match
+  if(!preg_match("/^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/",$_POST['username'])){
+	$errors[] = "Please enter a valid email address, e.g. name@gmail.com"; 
+  }
+  if($_POST['password'] == ""){
+	$errors[] = "Password cannot be blank"; 
+  }
+  if(strlen($_POST['password'])< 6 || !ctype_alnum($_POST['password']) ){
+	$errors[] = "Password must contain at least 6 alphanumeric characters"; 
+  }
+  if($_POST['password'] != $_POST['cnfmpassword']){
+	$errors[] = "Password is not confirmed"; 
+  }
+ 
+  if(0 < count($errors)){
+	$_SESSION['regForm'] = $_POST;
+	$_SESSION['errors'] = $errors;
+	$_SESSION['auth']=false;
+    header("Location: https://theorganizedchef.herokuapp.com/register.php"); 
     exit;
+ }
+  
+  //if valid entries, try to add to database:
+  $newUser = $dao->addUser($_POST['username'],$_POST['password']);
+  if($newUser == 0){
+    $errors[] = "Error, could not register"; 
+	$_SESSION['regForm'] = $_POST;
+    $_SESSION['errors'] = $errors; 
+	header("Location: https://theorganizedchef.herokuapp.com/register.php");
+	exit;
   }
   
-  $dao->checkPassword($_POST['email']);
-  if (//check password) {
-    $error = "Error, invalid password";
-    $_SESSION['error'] = $error;
-    header("Location: https://theorganizedchef.herokuapp.com/index.php"); //home page or login in page if different
-    exit;
-  }
-
-  //if passed, then getAllRecipes() and go to recipe page
-  header("Location: https://theorganizedchef.herokuapp.com/recipes.php");//send to recipe page?
+  //otherwise, confirm session and send to recipe page
+  unset($_SESSION['regForm']);
+  $_SESSION['user']= $newUser;
+  $_SESSION['auth']=true;
+  header("Location: https://theorganizedchef.herokuapp.com/recipes.php");
   exit;

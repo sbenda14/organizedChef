@@ -3,30 +3,39 @@
   require_once 'Dao.php';
   $dao = new Dao();
   
- //validate
-  $matchUser = $dao->verifyUser($_POST['password'], $_POST['email']);
-  if(!$matchUser) {
-    $error = "Error, email or password do not match";
-    $_SESSION['error'] = $error;
+  $errors = array();
+ //validate email is an email and password is not blank
+ if(!preg_match("/^[a-zA-Z0-9._-]+@[a-zA-Z0-9-]+\.[a-zA-Z.]{2,5}$/",$_POST['email'])){
+	$errors[] = "Please enter a valid email address, e.g. name@gmail.com"; 
+ }
+ if($_POST['password'] == ""){
+	$errors[] = "Password cannot be blank"; 
+ }
+ 
+ if(0 < count($errors)){
+	$_SESSION['logForm'] = $_POST;
+	$_SESSION['errors'] = $errors;
 	$_SESSION['auth']=false;
-    header("Location: https://theorganizedchef.herokuapp.com/login.php"); // http://localhost/organizedchef/login.php"); //home page or login in page if different
+    header("Location: https://theorganizedchef.herokuapp.com/login.php"); 
+    exit;
+ }
+ 
+ //If valid entries, check against users in database:
+ 
+  $matchUser = $dao->verifyUser($_POST['password'], $_POST['email']);
+
+  if($matchUser == 0) {
+    $_SESSION['logForm'] = $_POST;
+	$errors[] = "Error, email or password do not match";
+    $_SESSION['errors'] = $errors;
+	$_SESSION['auth']=false;
+    header("Location: https://theorganizedchef.herokuapp.com/login.php"); 
     exit;
   }
   
-  //if passed, then getAllRecipes() and go to recipe page
+  //If user exists and password valid, then go to recipe page
+  unset($_SESSION['logForm']);
+  $_SESSION['user']= $matchUser; //I know this isn't secure. will need to adjust
   $_SESSION['auth']=true;
-  header("Location: https://theorganizedchef.herokuapp.com/recipes.php"); //http://localhost/organizedchef/recipes.php");
-  exit;
+  header("Location: https://theorganizedchef.herokuapp.com/recipes.php");
   
-  // $username = "sbenda14@gmail.com";
-  // $password = "abc123";
-
-  // if ($username == $_POST['username'] && $password == $_POST['password']) {
-    // $_SESSION['auth'] = true;
-    // header("Location: http://localhost/organizedchef/recipes.php");
-    // exit;
-  // } else {
-    // $_SESSION['auth'] = false;
-    // $_SESSION['error'] = "Invalid username or password";
-    // header("Location: http://localhost/organizedchef/login.php");
-  // }
