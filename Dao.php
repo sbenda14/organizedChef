@@ -11,7 +11,7 @@ class Dao {
 
   public function getConnection() {
     try {
-       $connection = new PDO("mysql:host={$this->host}:3308;dbname={$this->dbname}", "{$this->username}", "{$this->password}");
+       $connection = new PDO("mysql:host={$this->host};dbname={$this->dbname}", "{$this->username}", "{$this->password}");
     } catch (Exception $e) {
 		print("<pre>" . print_r($e,1). "</pre>");
 		return null;
