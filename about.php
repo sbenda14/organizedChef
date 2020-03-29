@@ -18,10 +18,10 @@
 				husband and two monsters, Hera & Luna. When not busy studying or working,
 				she enjoys cooking, hiking, gardening, and quality time with her family.
 				</p>
-			</div>
-			<div class="aboutPics">
-				<img class="pups" src="Hera.png" id="Hera">
-				<img class="pups" src="Luna.png" id="Luna">
+				<div class="aboutPics">
+					<img class="pups" src="Hera.png" id="Hera">
+					<img class="pups" src="Luna.png" id="Luna">
+				</div>
 			</div>
 		</div>		
 <?php include_once("footer.php"); ?>
