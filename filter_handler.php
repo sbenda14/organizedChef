@@ -1,7 +1,5 @@
 <?php
   session_start();
-  require_once 'Dao.php';
-  $dao = new Dao();
 
   $_SESSION['filter'] = TRUE;
   if(empty($_POST['filterTitle'])){
