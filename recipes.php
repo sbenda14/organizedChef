@@ -80,8 +80,10 @@
 							}else{
 								$recipes = $dao->getAllRecipes($_SESSION['user']);
 							}
-							if(is_null($recipes)){
-								echo "Error message";
+							if (empty($recipes) && (!isset($_SESSION['filter'])||(isset($_SESSION['filter']) && !$_SESSION['filter']))){
+								echo "<tr><td class='tableMsg' colspan='9'>No recipes to display.</td></tr>";
+							}else if (empty($recipes) && isset($_SESSION['filter']) && $_SESSION['filter']) {
+								echo "<tr><td class='tableMsg' colspan='9'>No results found. Clear filters to see all recipes.</td></tr>";
 							}else {
 								foreach($recipes as $recipe){
 								  echo "<tr><td><a href='edit_recipe.php?editid={$recipe['recipe_id']}'>Edit</a></td>

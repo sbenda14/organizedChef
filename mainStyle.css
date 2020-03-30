@@ -150,6 +150,10 @@ th {
   background-color: #baf6e2;
 }
 
+td.tableMsg{
+  align:center;
+}
+
 #addRecipe, #editRecipe, #viewRecipe {
 	text-align: center;
 }
