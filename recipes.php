@@ -18,7 +18,7 @@
 			<div class="sideBar">
 				<p><a href='add_recipe.php'>Add a Recipe</a></p>
 				<hr></hr>
-				<p><a href='clear_filters.php'>Clear Filters</a> </p>
+				<p><a href='filter_clear.php'>Clear Filters</a> </p>
 				<hr></hr>
 				<div class="filters">
 					<p>
