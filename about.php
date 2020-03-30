@@ -19,8 +19,8 @@
 				she enjoys cooking, hiking, gardening, and quality time with her family.
 				</p>
 				<div class="aboutPics">
-					<img class="pups" src="Hera.png" id="Hera">
-					<img class="pups" src="Luna.png" id="Luna">
+					<img class="pups" src="images/Hera.png" id="Hera">
+					<img class="pups" src="images/Luna.png" id="Luna">
 				</div>
 			</div>
 		</div>		

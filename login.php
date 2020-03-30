@@ -1,6 +1,8 @@
 <?php
   session_start();
   include_once("banner.php");
+  include_once("joinUs.php");
+  include_once("navBar.php");
 ?>
 	<div class="plaintext" id="login">
 		<h1>Please log in</h1>

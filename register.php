@@ -1,6 +1,8 @@
 <?php
   session_start();
   include_once("banner.php");
+  include_once("joinUs.php");
+  include_once("navBar.php");
 ?>
 	<div class="plaintext" id="register">
 		<h1>Please register below</h1>
