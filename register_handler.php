@@ -28,7 +28,10 @@ session_start();
  }
   
   //if valid entries, try to add to database:
-  $newUser = $dao->addUser($_POST['username'],$_POST['password']);
+  $salt = 'aksjdfiowegnkgjnckjadsghiekbngj';
+  $pw = hash('sha256', $_POST['password'] . $salt);
+  $newUser = $dao->addUser($_POST['username'], $pw);
+
   if($newUser == 0){
     $errors[] = "Error, could not register"; 
 	$_SESSION['regForm'] = $_POST;

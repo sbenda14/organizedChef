@@ -21,8 +21,9 @@
  }
  
  //If valid entries, check against users in database:
- 
-  $matchUser = $dao->verifyUser($_POST['password'], $_POST['email']);
+  $salt = 'aksjdfiowegnkgjnckjadsghiekbngj';
+  $pw = hash('sha256', $_POST['password'] . $salt);
+  $matchUser = $dao->verifyUser($pw, $_POST['email']);
 
   if($matchUser == 0) {
     $_SESSION['logForm'] = $_POST;
