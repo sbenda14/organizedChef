@@ -252,6 +252,14 @@ label{
 	cursor:pointer;
 }
 
+#contactSuccess{
+  padding: 10px 40px;
+  background:#e9ffd9;
+  border:1px solid #a6ca8a;
+  /* source: https://www.cssportal.com/blog/css-notification-boxes/ */
+}
+
+
 .footer {
  clear: both;
  text-align:center;

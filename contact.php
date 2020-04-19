@@ -30,6 +30,10 @@
 				$sub_preset = $_SESSION['contactForm']['subject'];
 				$words_preset = $_SESSION['contactForm']['contactText'];
 			}
+			if (isset($_SESSION['submitted']) && $_SESSION['submitted']) {
+				echo "<p id='contactSuccess'>Your submission was successful. We will be in touch!</p>";
+			}
+			unset($_SESSION['submitted']);
 			?>		
 			<div class="plainText" id="contactForm">
 			<form action="contact_handler.php" method="post">
@@ -52,12 +56,5 @@
 				<div class="contactIn submitButton" ><input type="submit"/></div>
 			</form>
 			</div>
-			<?php 
-				if (isset($_SESSION['submitted']) && $_SESSION['submitted']) {
-					echo "<p>Your submission was successful. We will be in touch!</p>";
-				}
-				unset($_SESSION['submitted']);
-			?>	
-
 		</div>
 <?php include_once("footer.php"); ?>
