@@ -243,6 +243,15 @@ label{
   /* source: https://www.cssportal.com/blog/css-notification-boxes/ */
 }
 
+.close_error{
+	float:right;
+}
+
+.close_error:hover{
+	text-decoration: underline;
+	cursor:pointer;
+}
+
 .footer {
  clear: both;
  text-align:center;
