@@ -17,7 +17,7 @@
 		<?php
 			if (isset($_SESSION['errors'])) {
 			  foreach($_SESSION['errors'] as $error){
-				echo "<div class='error'>{$error}</div>";
+				echo "<div class='error'>{$error}<span class='close_error'>X</span></div>";
 			  }
 			  unset($_SESSION['errors']);
 			}
