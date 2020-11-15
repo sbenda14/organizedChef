@@ -20,7 +20,7 @@
 	$_SESSION['contactForm'] = $_POST;
 	$_SESSION['errors'] = $errors;
 	$_SESSION['auth']=false;
-    header("Location: https://theorganizedchef.herokuapp.com/contact.php"); 
+    header("Location: https://theorganizedchef.herokuapp.com/src/contact/contact.php"); 
     exit;
  }
  
@@ -32,12 +32,12 @@
     $_SESSION['contactForm'] = $_POST;
 	$errors[] = "Error with database connection";
     $_SESSION['errors'] = $errors;
-    header("Location:  https://theorganizedchef.herokuapp.com/contact.php"); 
+    header("Location:  https://theorganizedchef.herokuapp.com/src/contact/contact.php"); 
     exit;
   }else{
 	$_SESSION['submitted'] = true;  
   }
   
   unset($_SESSION['contactForm']);
-  header("Location: https://theorganizedchef.herokuapp.com/contact.php");
+  header("Location: https://theorganizedchef.herokuapp.com/src/contact/contact.php");
   

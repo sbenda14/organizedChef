@@ -1,4 +1,4 @@
 
 		<div class="leaveUs">
-			<a href="logout.php">Sign Out</a>
+			<a href="../login/logout.php">Sign Out</a>
 		</div>

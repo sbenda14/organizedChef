@@ -16,7 +16,7 @@
 	$_SESSION['logForm'] = $_POST;
 	$_SESSION['errors'] = $errors;
 	$_SESSION['auth']=false;
-    header("Location: https://theorganizedchef.herokuapp.com/login.php"); 
+    header("Location: https://theorganizedchef.herokuapp.com/src/login/login.php"); 
     exit;
  }
  
@@ -30,7 +30,7 @@
 	$errors[] = "Error, email or password do not match";
     $_SESSION['errors'] = $errors;
 	$_SESSION['auth']=false;
-    header("Location: https://theorganizedchef.herokuapp.com/login.php"); 
+    header("Location: https://theorganizedchef.herokuapp.com/src/login/login.php"); 
     exit;
   }
   
@@ -38,5 +38,5 @@
   unset($_SESSION['logForm']);
   $_SESSION['user']= $matchUser; //I know this isn't secure. will need to adjust
   $_SESSION['auth']=true;
-  header("Location: https://theorganizedchef.herokuapp.com/recipes.php");
+  header("Location: https://theorganizedchef.herokuapp.com/src/recipes/recipes.php");
   exit;
