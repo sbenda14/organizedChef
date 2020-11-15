@@ -1,12 +1,12 @@
 <?php 
   session_start();
-  include_once("banner.php");
+  include_once("../components/banner.php");
   if(!isset($_SESSION['auth']) || !$_SESSION['auth']){
-    include_once("joinUs.php");
+    include_once("../components/joinUs.php");
   }else	{
-	include_once("leaveUs.php");
+	include_once("../components/leaveUs.php");
    }
-  include_once("navBar.php");
+  include_once("../components/navBar.php");
 
  ?>
 		<div class="content">
@@ -24,4 +24,4 @@
 				</div>
 			</div>
 		</div>		
-<?php include_once("footer.php"); ?>
+<?php include_once("../components/footer.php"); ?>

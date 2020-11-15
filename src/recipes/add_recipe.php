@@ -1,8 +1,8 @@
 <?php 
   session_start();
-  include_once("banner.php");
-  include_once("leaveUs.php");
-  include_once("navBar.php");
+  include_once("../components/banner.php");
+  include_once("../components/leaveUs.php");
+  include_once("../components/navBar.php");
   
   
   // check if user is authenticated
@@ -107,4 +107,4 @@
     </form>
 	</div>
 	</div>
-<?php include_once("footer.php"); ?>
+<?php include_once("../components/footer.php"); ?>
