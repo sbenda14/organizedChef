@@ -1,6 +1,6 @@
  <?php
   session_start();
-  require_once 'Dao.php';
+  require_once '../../server/Dao.php';
   $dao = new Dao();
   
   $errors = array();
@@ -36,7 +36,7 @@
   if(0 < count($errors)){
 	$_SESSION['addForm'] = $_POST;
 	$_SESSION['errors'] = $errors;
-    header("Location:  https://theorganizedchef.herokuapp.com/add_recipe.php"); 
+    header("Location:  https://theorganizedchef.herokuapp.com/src/recipes/add_recipe.php"); 
     exit;
  }
 
@@ -45,6 +45,6 @@
   $dao->saveRecipe($_POST['recipeTitle'], $_POST['category'], $_POST['prep'], $_POST['cook'], $_POST['recipeAuthor'],
 			$_POST['source'], $_POST['recipeLink'], $_POST['ingredients'], $_POST['directions'], $_SESSION['user']);
   unset($_SESSION['addForm']);
-  header("Location:  https://theorganizedchef.herokuapp.com/recipes.php");
+  header("Location:  https://theorganizedchef.herokuapp.com/src/recipes/recipes.php");
   exit;
   

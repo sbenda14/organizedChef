@@ -18,7 +18,7 @@
 	$_SESSION['filterIngredient']= "%". $_POST['filterIngredient'] . "%";
   }
 
-  header("Location: https://theorganizedchef.herokuapp.com/recipes.php");//send to recipe page
+  header("Location: https://theorganizedchef.herokuapp.com/src/recipes/recipes.php");//send to recipe page
   exit;
   
   

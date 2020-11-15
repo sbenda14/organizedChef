@@ -7,7 +7,7 @@
   
   // check if user is authenticated
   if (!isset($_SESSION['auth']) || !$_SESSION['auth'])  {
-    header("Location: https://theorganizedchef.herokuapp.com/login.php");
+    header("Location: https://theorganizedchef.herokuapp.com/src/login/login.php");
     exit;
   }
   ?>
