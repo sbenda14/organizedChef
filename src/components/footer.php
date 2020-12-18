@@ -2,7 +2,7 @@
 			<hr></hr>
 			<ul>
 				<li>
-					<a href="../../index.php">Home</a>
+					<a href="../index.php">Home</a>
 				</li>
 				<li>
 					<a href="../recipes/recipes.php">Recipes</a>
