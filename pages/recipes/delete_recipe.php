@@ -1,8 +1,8 @@
 <?php
 session_start();
   
-  require_once '../../server/Dao.php';
+  require_once '/server/Dao.php';
   $dao = new Dao();
   $dao->deleteRecipe($_GET['recipeid'], $_SESSION['user']);
-  header("Location:  https://theorganizedchef.herokuapp.com/src/recipes/recipes.php");
+  header("Location:  https://theorganizedchef.herokuapp.com/pages/recipes/recipes.php");
   exit;
