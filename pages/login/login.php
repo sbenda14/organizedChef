@@ -1,8 +1,8 @@
 <?php
   session_start();
-  include_once("/pages/components/banner.php");
-  include_once("/pages/components/joinUs.php");
-  include_once("/pages/components/navBar.php");
+  include_once("../components/banner.php");
+  include_once("../components/joinUs.php");
+  include_once("../components/navBar.php");
 ?>
 	<div class="plaintext" id="login">
 		<h1>Please log in</h1>
@@ -32,4 +32,4 @@
         <div id="loginButton"><input type="submit"/></div>
     </form>
 	</div>
-<?php include_once("/pages/components/footer.php"); ?>
+<?php include_once("../components/footer.php"); ?>

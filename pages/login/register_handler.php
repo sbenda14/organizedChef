@@ -1,7 +1,7 @@
 <?php
 session_start();
   
-  require_once '/server/Dao.php';
+  require_once '../../server/Dao.php';
   $dao = new Dao();
   
    $errors = array();

@@ -1,12 +1,12 @@
 <?php 
   session_start();
-  include_once("/pages/components/banner.php");
+  include_once("../components/banner.php");
   if(!isset($_SESSION['auth']) || !$_SESSION['auth']){
-    include_once("/pages/components/joinUs.php");
+    include_once("../components/joinUs.php");
   }else	{
-	include_once("/pages/components/leaveUs.php");
+	include_once("../components/leaveUs.php");
    }
-  include_once("/pages/components/navBar.php");
+  include_once("../components/navBar.php");
  ?>
 		<div class="content plaintext" id="contact">
 			<h1>Contact Us</h1>
@@ -57,4 +57,4 @@
 			</form>
 			</div>
 		</div>
-<?php include_once("/pages/components/footer.php"); ?>
+<?php include_once("../components/footer.php"); ?>
