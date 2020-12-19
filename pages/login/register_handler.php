@@ -1,7 +1,7 @@
 <?php
 session_start();
   
-  require_once 'Dao.php';
+  require_once '../../server/Dao.php';
   $dao = new Dao();
   
    $errors = array();
@@ -23,7 +23,7 @@ session_start();
 	$_SESSION['regForm'] = $_POST;
 	$_SESSION['errors'] = $errors;
 	$_SESSION['auth']=false;
-    header("Location: https://theorganizedchef.herokuapp.com/register.php"); 
+    header("Location: https://theorganizedchef.herokuapp.com/pages/login/register.php"); 
     exit;
  }
   
@@ -36,7 +36,7 @@ session_start();
     $errors[] = "Error, could not register"; 
 	$_SESSION['regForm'] = $_POST;
     $_SESSION['errors'] = $errors; 
-	header("Location: https://theorganizedchef.herokuapp.com/register.php");
+	header("Location: https://theorganizedchef.herokuapp.com/pages/login/register.php");
 	exit;
   }
   
@@ -44,5 +44,5 @@ session_start();
   unset($_SESSION['regForm']);
   $_SESSION['user']= $newUser;
   $_SESSION['auth']=true;
-  header("Location: https://theorganizedchef.herokuapp.com/recipes.php");
+  header("Location: https://theorganizedchef.herokuapp.com/pages/recipes/recipes.php");
   exit;

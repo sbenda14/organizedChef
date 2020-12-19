@@ -1,8 +1,8 @@
 <?php
   session_start();
-  include_once("banner.php");
-  include_once("joinUs.php");
-  include_once("navBar.php");
+  include_once("../components/banner.php");
+  include_once("../components/joinUs.php");
+  include_once("../components/navBar.php");
 ?>
 	<div class="plaintext" id="register">
 		<h1>Please register below</h1>
@@ -36,4 +36,4 @@
 		  <div id="registerButton"><input type="submit"/></div>
 		</form>
 	</div>	
-<?php include_once("footer.php"); ?>
+<?php include_once("../components/footer.php"); ?>

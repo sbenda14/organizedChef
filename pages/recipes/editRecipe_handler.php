@@ -1,6 +1,6 @@
 <?php
   session_start();
-  require_once 'Dao.php';
+  require_once '../../server/Dao.php';
   $dao = new Dao();
   
   $errors = array();
@@ -35,7 +35,7 @@
   if(0 < count($errors)){
 	$_SESSION['editForm'] = $_POST;
 	$_SESSION['errors'] = $errors;
-    header("Location: https://theorganizedchef.herokuapp.com/edit_recipe.php"); 
+    header("Location: https://theorganizedchef.herokuapp.com/pages/recipes/edit_recipe.php"); 
     exit;
  }
 
@@ -43,5 +43,5 @@
 			$_POST['editSource'], $_POST['editLink'], $_POST['editingredients'], $_POST['editdirections'], $_POST['editid']);
  
   unset($_SESSION['editForm']);
-  header("Location: https://theorganizedchef.herokuapp.com/recipes.php");//send to recipe page
+  header("Location: https://theorganizedchef.herokuapp.com/pages/recipes/recipes.php");//send to recipe page
   exit;
