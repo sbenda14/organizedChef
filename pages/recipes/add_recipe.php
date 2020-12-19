@@ -1,13 +1,13 @@
 <?php 
   session_start();
-  include_once("banner.php");
-  include_once("leaveUs.php");
-  include_once("navBar.php");
+  include_once("../components/banner.php");
+  include_once("../components/leaveUs.php");
+  include_once("../components/navBar.php");
   
   
   // check if user is authenticated
   if (!isset($_SESSION['auth']) || !$_SESSION['auth'])  {
-    header("Location: https://theorganizedchef.herokuapp.com/login.php");
+    header("Location: https://theorganizedchef.herokuapp.com/pages/login/login.php");
     exit;
   }
   ?>
@@ -107,4 +107,4 @@
     </form>
 	</div>
 	</div>
-<?php include_once("footer.php"); ?>
+<?php include_once("../components/footer.php"); ?>

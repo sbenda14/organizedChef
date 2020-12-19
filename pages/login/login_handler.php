@@ -1,6 +1,6 @@
 <?php
   session_start(); 
-  require_once 'Dao.php';
+  require_once '../../server/Dao.php';
   $dao = new Dao();
   
   $errors = array();
@@ -16,7 +16,7 @@
 	$_SESSION['logForm'] = $_POST;
 	$_SESSION['errors'] = $errors;
 	$_SESSION['auth']=false;
-    header("Location: https://theorganizedchef.herokuapp.com/login.php"); 
+    header("Location: https://theorganizedchef.herokuapp.com/pages/login/login.php"); 
     exit;
  }
  
@@ -30,7 +30,7 @@
 	$errors[] = "Error, email or password do not match";
     $_SESSION['errors'] = $errors;
 	$_SESSION['auth']=false;
-    header("Location: https://theorganizedchef.herokuapp.com/login.php"); 
+    header("Location: https://theorganizedchef.herokuapp.com/pages/login/login.php"); 
     exit;
   }
   
@@ -38,5 +38,5 @@
   unset($_SESSION['logForm']);
   $_SESSION['user']= $matchUser; //I know this isn't secure. will need to adjust
   $_SESSION['auth']=true;
-  header("Location: https://theorganizedchef.herokuapp.com/recipes.php");
+  header("Location: https://theorganizedchef.herokuapp.com/pages/recipes/recipes.php");
   exit;
