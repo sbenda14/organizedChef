@@ -1,7 +1,7 @@
 		<div class="nav-bar">
 			<ul class="navigate">
 				<li id='current page'>
-					<a href="../index.php">Home</a>
+					<a href="../../index.php">Home</a>
 				</li>
 				<li>
 					<a href="../recipes/recipes.php">Recipes</a>
