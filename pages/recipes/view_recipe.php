@@ -1,8 +1,8 @@
 <?php
   session_start();
-  include_once("/pages/components/banner.php");
-  include_once("/pages/components/leaveUs.php");
-  include_once("/pages/components/navBar.php");
+  include_once("../components/banner.php");
+  include_once("../components/leaveUs.php");
+  include_once("../components/navBar.php");
   
   // check if user is authenticated
   if (!isset($_SESSION['auth']) || !$_SESSION['auth'])  {
@@ -34,4 +34,4 @@
 			<div class="infoSection"><span class="inlineHeader">Directions: </span>  <div class="ingredDirect"><?php echo str_replace("<br /><br />", "</li><li>", nl2br(htmlspecialchars($recipe['directions']))); ?></div></div> 
 		</div>
 	</div>
-<?php include_once("/pages/components/footer.php"); ?>
+<?php include_once("../components/footer.php"); ?>
