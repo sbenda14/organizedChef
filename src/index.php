@@ -24,7 +24,7 @@
 		<p>With the Organized Chef, you can:</p>
 		<div class="display">
 			<div class="screenshot"><p>Add a recipe or filter by title, ingredient or category:</p> <img class="demo" src="../images/sidebar.png"></div>
-			<div  class="screenshot"><p>View all recipes, or a filtered selection:</p><img class="demo" src="../images/recipeList.png"></div>
+			<div  class="screenshot"><p>View all recipes, or a filtered selection:</p><img class="demo" src="/images/recipeList.png"></div>
 			<div  class="screenshot"><p>View recipe on page, or follow link to original page:</p><img class="demo" src="../images/recipeView.png"></div>
 		</div>
 		<div id="signUp" class="plainText">
