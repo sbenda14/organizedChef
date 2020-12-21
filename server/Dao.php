@@ -1,12 +1,6 @@
 <?php
 class Dao {
 
-  /*private $host = 'us-cdbr-iron-east-04.cleardb.net';
-  private $dbname = 'heroku_a8613588709018f';
-  private $username = 'be6e04cbad5ae8';
-  private $password = 'dbc99fb0';
-	*/
-
   public function __construct() {
   }
 
