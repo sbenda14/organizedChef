@@ -1,17 +1,23 @@
 <?php
 class Dao {
 
-  private $host = 'us-cdbr-iron-east-04.cleardb.net';
+  /*private $host = 'us-cdbr-iron-east-04.cleardb.net';
   private $dbname = 'heroku_a8613588709018f';
   private $username = 'be6e04cbad5ae8';
   private $password = 'dbc99fb0';
+	*/
 
   public function __construct() {
   }
 
   public function getConnection() {
-    try {
-       $connection = new PDO("mysql:host={$this->host};dbname={$this->dbname}", "{$this->username}", "{$this->password}");
+    $url = parse_url(getenv("CLEARDB_DATABASE_URL"));
+	$host = $url["host"];
+	$dbname = substr($url["path"],1);
+	$username = $url["user"];
+	$password = $url["pass"];
+	try {
+       $connection = new PDO("mysql:host={$host};dbname={$dbname}", "{$username}", "{$password}");
     } catch (Exception $e) {
 		print("<pre>" . print_r($e,1). "</pre>");
 		return null;
