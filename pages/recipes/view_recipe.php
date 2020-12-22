@@ -10,7 +10,7 @@
     exit;
   }
   
-  require_once '/server/Dao.php';
+  require_once '../../server/Dao.php';
   $dao = new Dao();
  
 ?>
