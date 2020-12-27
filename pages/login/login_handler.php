@@ -1,6 +1,6 @@
 <?php
   session_start(); 
-  
+  require_once '../../vendor/autoload.php';
   use Monolog\Logger;
   use Monolog\Handler\StreamHandler;
   $log = new Logger('login');
