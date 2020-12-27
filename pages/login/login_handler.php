@@ -37,7 +37,7 @@
   if($matchUser == 0) {
     $_SESSION['logForm'] = $_POST;
 	$errors[] = "Error, email or password do not match";
-	$log->warn('Email or password did not match', ['email' => $_POST['email']]);
+	$log->warning('Email or password did not match', ['email' => $_POST['email']]);
     $_SESSION['errors'] = $errors;
 	$_SESSION['auth']=false;
     header("Location: https://theorganizedchef.herokuapp.com/pages/login/login.php"); 
