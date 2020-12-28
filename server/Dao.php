@@ -65,7 +65,7 @@ class Dao {
 	if(is_null($conn)) {
       return;
     }
-	$this->log->notice('Verify user', ['user'=>$user['user_id']]);
+	$this->log->notice('Verify user', ['user'=>$email]]);
     $checkQuery = "select * from userinfo where email = :email";
     $q = $conn->prepare($checkQuery);
 	$q->execute(['email' => $email]); 
