@@ -40,7 +40,7 @@ class Dao {
 	if ($q->rowCount() > 0) { //assuming emails are unique here.
 		$result = 0;
 	}else{
-		$salt = random_bytes(16);
+		$salt = bin2hex(random_bytes(16));
 	  	$pw = hash('sha256', $password . $salt);
 		
 		$saveQuery = "insert into userinfo (email, password, salt) values (:eml, :pswrd, :slt)";
