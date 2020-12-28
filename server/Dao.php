@@ -4,11 +4,12 @@
   use Monolog\Handler\StreamHandler;
  
 class Dao {
-  private $log = new Logger('Database');
-  //use php://stderr to connect log to Heroku logs
-  $log->pushHandler(new StreamHandler('php://stderr', Logger::DEBUG));
+  private $log;
  
   public function __construct() {
+	$this->log = new Logger('Database');
+	 //use php://stderr to connect log to Heroku logs
+	$this->log->pushHandler(new StreamHandler('php://stderr', Logger::DEBUG));
   }
 
   public function getConnection() {
@@ -21,7 +22,7 @@ class Dao {
        $connection = new PDO("mysql:host={$host};dbname={$dbname}", "{$username}", "{$password}");
     } catch (Exception $e) {
 		print("<pre> Could not connect to the database </pre>");
-		$log->alert('Could not connect to the database!', ['error'=> print_r($e,1)]);
+		$this->log->alert('Could not connect to the database!', ['error'=> print_r($e,1)]);
 		return null;
     }
     return $connection;
@@ -52,7 +53,7 @@ class Dao {
 		if ($q2->rowCount() > 0) {		
 			$result = $user['user_id'];	
 		}
-		$log->notice('New user added', ['user'=>$user['user_id']]);
+		$this->log->notice('New user added', ['user'=>$user['user_id']]);
 	}
 	
 	return $result;	
@@ -64,6 +65,7 @@ class Dao {
 	if(is_null($conn)) {
       return;
     }
+	$this->log->notice('Verify user', ['user'=>$user['user_id']]);
     $checkQuery = "select * from userinfo where email = :email";
     $q = $conn->prepare($checkQuery);
 	$q->execute(['email' => $email]); 
@@ -80,6 +82,7 @@ class Dao {
   //basic get/save/update/delete recipe functions	
   public function getRecipe($recipeID, $userID) {
     $conn = $this->getConnection();
+	$this->log->notice('Get recipe', ['userID'=>$userID, 'recipeID'=>$recipeID]);
     try {
 		$queryStmt = "select * from recipe where recipe_id = :recipe AND user_id = :user";
 		$q = $conn->prepare($queryStmt);
@@ -88,7 +91,7 @@ class Dao {
 		$q->execute();
 	return $q->fetch(PDO::FETCH_ASSOC);
     } catch(Exception $e) {
-      $log->error('Could not fetch recipe', ['userID'=>$userID, 'recipeID'=>$recipeID, 'error'=>print_r($e,1)]);
+      $this->log->error('Could not fetch recipe', ['userID'=>$userID, 'recipeID'=>$recipeID, 'error'=>print_r($e,1)]);
       exit;
     }
   }
@@ -98,6 +101,7 @@ class Dao {
 	if(is_null($conn)) {
       return;
     }
+	$this->log->notice('Save recipe', ['userID'=>$userID, 'title'=>$title]);
     $saveQuery = "insert into recipe (title, category, prep_time, cook_time, author, source, link, ingredients, directions, user_id) values (:title, :category, :prep_time, :cook_time, :author, :src, :link, :ingredients, :directions, :user_id)";
     $q = $conn->prepare($saveQuery);
     $q->bindParam(":title", $title);
@@ -118,6 +122,7 @@ class Dao {
 	if(is_null($conn)) {
       return;
     }
+	$this->log->notice('Update recipe', ['userID'=>$userID, 'recipeID'=>$recipeID]);
     $saveQuery = "update recipe set title = :title, category = :category, prep_time = :prep_time, cook_time = :cook_time, author= :author, source=:src, link = :link, ingredients = :ingredients, directions = :directions where recipe.recipe_id = :recipeID";
     $q = $conn->prepare($saveQuery);
     $q->bindParam(":title", $title);
@@ -135,6 +140,7 @@ class Dao {
 
   public function deleteRecipe($recipeID, $userID) {
     $conn = $this->getConnection();
+	$this->log->notice('Delete recipe', ['userID'=>$userID, 'recipeID'=>$recipeID]);
     $deleteQuery = "delete from recipe where recipe_id = :id AND user_id = :user";
     $q = $conn->prepare($deleteQuery);
     $q->bindParam(":id", $recipeID);
@@ -145,6 +151,7 @@ class Dao {
   //functions for sorted/filtered recipes
   public function getAllRecipes($userID){
 	$conn = $this->getConnection();
+	$this->log->notice('Get all recipes', ['userID'=>$userID]);
     try {
 		$queryStmt ="select recipe_id, title, category, prep_time, cook_time, author, source, link  from recipe where user_id = :user order by title asc";
 		$q = $conn->prepare($queryStmt);
@@ -152,14 +159,15 @@ class Dao {
 		$q->execute();
 	return $q->fetchAll(PDO::FETCH_ASSOC);
     } catch(Exception $e) {
-      $log->error('Could not fetch recipes', ['userID'=>$userID, 'error'=>print_r($e,1)]);
+      $this->log->error('Could not fetch recipes', ['userID'=>$userID, 'error'=>print_r($e,1)]);
       exit;
     }  
   } //default for recipe table. order by title
 
   public function getRecipesWhere($userID, $title, $ingredient, $category){
 	$conn = $this->getConnection();
-    try {
+    $this->log->notice('Get select recipes', ['userID'=>$userID]);
+	try {
 		$queryStmt = "select recipe_id, title, category, prep_time, cook_time, author, source, link  from recipe where user_id = :user
 		AND title LIKE :title AND ingredients LIKE :ingred AND category LIKE :cat order by title asc";
 		$q = $conn->prepare($queryStmt);
@@ -170,7 +178,7 @@ class Dao {
 		$q->execute();
 	return $q->fetchAll(PDO::FETCH_ASSOC);
     } catch(Exception $e) {
-      $log->error('Filter recipes error', ['userID'=>$userID, 'error'=>print_r($e,1)]);
+      $this->log->error('Filter recipes error', ['userID'=>$userID, 'error'=>print_r($e,1)]);
       exit;
     }  
   } //add in filters to search here. if none, report none. decide on filter order...
@@ -180,14 +188,14 @@ class Dao {
 	if(is_null($conn)) {
       return 0;
     }
-    $saveQuery = "insert into contactus (contactEmail, contactName, contactSubject, contactText) values (:email, :name, :sub, :words)";
+    $this->log->notice('New message added', ['sender'=>$contactEmail]);
+	$saveQuery = "insert into contactus (contactEmail, contactName, contactSubject, contactText) values (:email, :name, :sub, :words)";
     $q = $conn->prepare($saveQuery);
     $q->bindParam(":email", $contactName);
 	$q->bindParam(":name", $contactEmail);
 	$q->bindParam(":sub", $subject);
 	$q->bindParam(":words", $contactText);
     $q->execute();
-	$log->notice('New message added', ['sender'=>$contactEmail]);
 	return 1;
   }
    
