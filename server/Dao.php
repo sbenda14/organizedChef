@@ -40,10 +40,14 @@ class Dao {
 	if ($q->rowCount() > 0) { //assuming emails are unique here.
 		$result = 0;
 	}else{
-	  	$saveQuery = "insert into userinfo (email, password) values (:eml, :pswrd)";
+		$salt = random_bytes(16);
+	  	$pw = hash('sha256', $password . $salt);
+		
+		$saveQuery = "insert into userinfo (email, password, salt) values (:eml, :pswrd, :slt)";
 		$q = $conn->prepare($saveQuery);
 		$q->bindParam(":eml", $email);
-		$q->bindParam(":pswrd", $password);
+		$q->bindParam(":pswrd", $pw);
+		$q->bindParam(":slt", $salt);
 		$q->execute();
 		//return user id...
 		$checkQuery = "select * from userinfo where email = :email";
