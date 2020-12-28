@@ -2,12 +2,12 @@
   require_once '../../vendor/autoload.php';
   use Monolog\Logger;
   use Monolog\Handler\StreamHandler;
-  $log = new Logger('Database');
+ 
+class Dao {
+  private $log = new Logger('Database');
   //use php://stderr to connect log to Heroku logs
   $log->pushHandler(new StreamHandler('php://stderr', Logger::DEBUG));
-  
-class Dao {
-
+ 
   public function __construct() {
   }
 
