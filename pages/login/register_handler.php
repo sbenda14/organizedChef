@@ -28,7 +28,6 @@ session_start();
  }
   
   //if valid entries, try to add to database:
-  //$salt = 'aksjdfiowegnkgjnckjadsghiekbngj';
   $newUser = $dao->addUser($_POST['username'], $_POST['password']);
 
   if($newUser == 0){
