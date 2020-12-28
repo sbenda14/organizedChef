@@ -72,7 +72,8 @@ class Dao {
 	$user = $q->fetch(PDO::FETCH_ASSOC);
 	$result = 0;
 	if ($q->rowCount() > 0) { //assuming emails are unique here.
-		if ($user['password'] == $password){
+		$pw = hash('sha256', $password . $user['salt']);
+		if ($user['password'] == $pw){
 			$result = $user['user_id'];
 		}
 	}
