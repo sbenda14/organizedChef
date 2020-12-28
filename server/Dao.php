@@ -1,4 +1,11 @@
 <?php
+  require_once '../../vendor/autoload.php';
+  use Monolog\Logger;
+  use Monolog\Handler\StreamHandler;
+  $log = new Logger('Database');
+  //use php://stderr to connect log to Heroku logs
+  $log->pushHandler(new StreamHandler('php://stderr', Logger::DEBUG));
+  
 class Dao {
 
   public function __construct() {
@@ -13,7 +20,8 @@ class Dao {
 	try {
        $connection = new PDO("mysql:host={$host};dbname={$dbname}", "{$username}", "{$password}");
     } catch (Exception $e) {
-		print("<pre>" . print_r($e,1). "</pre>");
+		print("<pre> Could not connect to the database </pre>");
+		$log->alert('Could not connect to the database!', ['error'=> print_r($e,1)]);
 		return null;
     }
     return $connection;
@@ -44,6 +52,7 @@ class Dao {
 		if ($q2->rowCount() > 0) {		
 			$result = $user['user_id'];	
 		}
+		$log->notice('New user added', ['user'=>$user['user_id']]);
 	}
 	
 	return $result;	
@@ -79,7 +88,7 @@ class Dao {
 		$q->execute();
 	return $q->fetch(PDO::FETCH_ASSOC);
     } catch(Exception $e) {
-      echo print_r($e,1);
+      $log->error('Could not fetch recipe', ['userID'=>$userID, 'recipeID'=>$recipeID, 'error'=>print_r($e,1)]);
       exit;
     }
   }
@@ -143,7 +152,7 @@ class Dao {
 		$q->execute();
 	return $q->fetchAll(PDO::FETCH_ASSOC);
     } catch(Exception $e) {
-      echo print_r($e,1);
+      $log->error('Could not fetch recipes', ['userID'=>$userID, 'error'=>print_r($e,1)]);
       exit;
     }  
   } //default for recipe table. order by title
@@ -161,7 +170,7 @@ class Dao {
 		$q->execute();
 	return $q->fetchAll(PDO::FETCH_ASSOC);
     } catch(Exception $e) {
-      echo print_r($e,1);
+      $log->error('Filter recipes error', ['userID'=>$userID, 'error'=>print_r($e,1)]);
       exit;
     }  
   } //add in filters to search here. if none, report none. decide on filter order...
@@ -178,6 +187,7 @@ class Dao {
 	$q->bindParam(":sub", $subject);
 	$q->bindParam(":words", $contactText);
     $q->execute();
+	$log->notice('New message added', ['sender'=>$contactEmail]);
 	return 1;
   }
    
