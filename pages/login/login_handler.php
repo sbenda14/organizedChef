@@ -29,9 +29,7 @@
     exit;
  }
  
- //If valid entries, check against users in database:
-  //$salt = 'aksjdfiowegnkgjnckjadsghiekbngj';
-  //$pw = hash('sha256', $_POST['password'] . $salt);
+  //If valid entries, check against users in database:
   $matchUser = $dao->verifyUser($_POST['password'], $_POST['email']);
 
   if($matchUser == 0) {
