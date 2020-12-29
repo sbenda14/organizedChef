@@ -100,7 +100,7 @@ class Dao {
 			$q->execute([':tkn' => $tok]); 
 			if($q->rowCount() >0){
 				$result = 0;
-			else{
+			}else{
 				$result = 1;
 			}
 		}
