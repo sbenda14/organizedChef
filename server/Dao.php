@@ -88,6 +88,7 @@ class Dao {
 			$result = $user['token'];
 		}
 	}
+	$this->log->debug('user token is', ['token'=>$result]);
 	return $result;
   }
   
@@ -203,6 +204,7 @@ class Dao {
   public function getAllRecipes($token){
 	$conn = $this->getConnection();
     try {
+		$this->log->debug('user token is', ['token'=>$token]);
 		$userID = $this->getUserID($conn, $token);
 		$this->log->notice('Get all recipes', ['userID'=>$userID]);
 		$queryStmt ="select recipe_id, title, category, prep_time, cook_time, author, source, link  from recipe where user_id = :user order by title asc";
