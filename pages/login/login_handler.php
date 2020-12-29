@@ -5,7 +5,7 @@
   use Monolog\Handler\StreamHandler;
   $log = new Logger('login');
   //use php://stderr to connect log to Heroku logs
-  $log->pushHandler(new StreamHandler('php://stderr', Logger::DEBUG));
+  $log->pushHandler(new StreamHandler('php://stderr', Logger::WARNING));
   
   require_once '../../server/Dao.php';
   $dao = new Dao();

@@ -9,7 +9,7 @@ class Dao {
   public function __construct() {
 	$this->log = new Logger('Database');
 	 //use php://stderr to connect log to Heroku logs
-	$this->log->pushHandler(new StreamHandler('php://stderr', Logger::DEBUG));
+	$this->log->pushHandler(new StreamHandler('php://stderr', Logger::WARNING));
   }
 
   public function getConnection() {
