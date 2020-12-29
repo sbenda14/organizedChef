@@ -44,7 +44,7 @@
   
   //If user exists and password valid, then go to recipe page
   unset($_SESSION['logForm']);
-  $_SESSION['user']= $matchUser; //I know this isn't secure. will need to adjust
+  $_SESSION['user']= $matchUser; 
   $log->info('user is logged in', ['email' => $_POST['email']]);
   $_SESSION['auth']=true;
   header("Location: https://theorganizedchef.herokuapp.com/pages/recipes/recipes.php");
