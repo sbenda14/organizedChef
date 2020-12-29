@@ -41,13 +41,15 @@ class Dao {
 		$result = 0;
 	}else{
 		$salt = bin2hex(random_bytes(16));
+		$token = getToken($conn);
 	  	$pw = hash('sha256', $password . $salt);
 		
-		$saveQuery = "insert into userinfo (email, password, salt) values (:eml, :pswrd, :slt)";
+		$saveQuery = "insert into userinfo (email, password, salt, token) values (:eml, :pswrd, :slt, :tok)";
 		$q = $conn->prepare($saveQuery);
 		$q->bindParam(":eml", $email);
 		$q->bindParam(":pswrd", $pw);
 		$q->bindParam(":slt", $salt);
+		$q->bindParam(":tok", $token);
 		$q->execute();
 		//return user id...
 		$checkQuery = "select * from userinfo where email = :email";
@@ -78,11 +80,37 @@ class Dao {
 	if ($q->rowCount() > 0) { //assuming emails are unique here.
 		$pw = hash('sha256', $password . $user['salt']);
 		if ($user['password'] == $pw){
+			$tok = getToken($conn);
+			updateToken($conn, $user['user_id'], $tok);
 			$result = $user['user_id'];
 		}
 	}
 	return $result;
   }
+  
+  	private function getToken($conn){
+		$result = 0;
+		while ($result == 0){
+			$tok = bin2hex(random_bytes(16));
+			$checkQuery = "select * from userinfo where token = :tkn";
+			$q = $conn->prepare($checkQuery);
+			$q->execute([':tkn' => $tok]); 
+			if($q->rowCount() >0){
+				$result = 0;
+			else{
+				$result = 1;
+			}
+		}
+		return $tok;
+	}
+	
+	private function updateToken($conn, $userID, $tok){
+	    $saveQuery = "update userinfo set token = :tkn where user_id = :user";
+		$q = $conn->prepare($saveQuery);
+		$q->bindParam(":tkn", $tok);
+		$q->bindParam(":user", $userID);
+		$q->execute();
+	}
   
   //basic get/save/update/delete recipe functions	
   public function getRecipe($recipeID, $userID) {
