@@ -42,6 +42,7 @@ class Dao {
 	}else{
 		$salt = bin2hex(random_bytes(16));
 		$token = getToken($conn);
+		$this->log->debug('New token', ['user'=>$email, 'token'=>$tok]);
 	  	$pw = hash('sha256', $password . $salt);
 		
 		$saveQuery = "insert into userinfo (email, password, salt, token) values (:eml, :pswrd, :slt, :tok)";
@@ -58,8 +59,9 @@ class Dao {
 		$user = $q2->fetch(PDO::FETCH_ASSOC);
 		if ($q2->rowCount() > 0) {		
 			$result = $user['user_id'];	
+			$this->log->notice('New user added', ['user'=>$user['user_id']]);
 		}
-		$this->log->notice('New user added', ['user'=>$user['user_id']]);
+		
 	}
 	
 	return $result;	
@@ -81,6 +83,7 @@ class Dao {
 		$pw = hash('sha256', $password . $user['salt']);
 		if ($user['password'] == $pw){
 			$tok = getToken($conn);
+			$this->log->debug('New token', ['user'=>$email, 'token'=>$tok]);
 			updateToken($conn, $user['user_id'], $tok);
 			$result = $user['user_id'];
 		}
