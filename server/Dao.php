@@ -41,8 +41,8 @@ class Dao {
 		$result = 0;
 	}else{
 		$salt = bin2hex(random_bytes(16));
-		$token = getToken($conn);
-		$this->log->debug('New token', ['user'=>$email, 'token'=>$tok]);
+		$token = $this->getToken($conn);
+		$this->log->debug('New user, token', ['user'=>$email, 'token'=>$tok]);
 	  	$pw = hash('sha256', $password . $salt);
 		
 		$saveQuery = "insert into userinfo (email, password, salt, token) values (:eml, :pswrd, :slt, :tok)";
