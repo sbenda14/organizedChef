@@ -85,7 +85,7 @@ class Dao {
 			$tok = $this->getToken($conn);
 			$this->log->notice('New token', ['user'=>$email, 'token'=>$tok]);
 			$this->updateToken($conn, $user['user_id'], $tok);
-			$result = $user['token'];
+			$result = $tok;
 		}
 	}
 	$this->log->debug('user token is', ['token'=>$result]);
