@@ -82,9 +82,9 @@ class Dao {
 	if ($q->rowCount() > 0) { //assuming emails are unique here.
 		$pw = hash('sha256', $password . $user['salt']);
 		if ($user['password'] == $pw){
-			$tok = getToken($conn);
+			$tok = $this->getToken($conn);
 			$this->log->debug('New token', ['user'=>$email, 'token'=>$tok]);
-			updateToken($conn, $user['user_id'], $tok);
+			$this->updateToken($conn, $user['user_id'], $tok);
 			$result = $user['user_id'];
 		}
 	}
