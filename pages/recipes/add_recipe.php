@@ -23,7 +23,7 @@
 			}
 			$title_preset = "";
 			$author_preset = "";
-			$category_preset = "";
+			$category_preset = "Main Dish";
 			$prep_preset = "";
 			$cook_preset = "";
 			$source_preset = "";
